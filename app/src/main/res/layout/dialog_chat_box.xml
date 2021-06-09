@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.sx.trackdispatch.viewmodel.ChatBoxViewModel" />
+        <import type="com.sx.trackdispatch.dialog.ChatBoxDialog.PageType"/>
+        <variable
+            name="click"
+            type="com.sx.trackdispatch.dialog.ChatBoxDialog.ClickProxy" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="@dimen/dp620"
+        android:layout_height="@dimen/dp582"
+        android:orientation="horizontal"
+        android:background="@drawable/chat_parent_bg">
+
+        <LinearLayout
+            android:layout_width="@dimen/dp61"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <ImageView
+                android:layout_width="@dimen/dp38"
+                android:layout_height="@dimen/dp38"
+                android:src="@mipmap/user_chat_default"
+                android:layout_marginTop="@dimen/dp22"
+                android:background="@drawable/shape_white_radius_5"/>
+
+            <ImageView
+                android:layout_width="@dimen/dp61"
+                android:layout_height="@dimen/dp61"
+                android:padding="@dimen/dp8"
+                android:background='@{vm.pageType==PageType.MESSAGE?@drawable/chat_select_bg:null}'
+                android:id="@+id/img_msg"
+                android:src="@{vm.pageType==PageType.MESSAGE?@drawable/chat_msg_type_select:@drawable/chat_msg_type}"
+                android:layout_marginTop="@dimen/dp30"
+                android:onClick="@{()->click.changePageType(PageType.MESSAGE)}"
+                />
+
+            <ImageView
+                android:layout_width="@dimen/dp61"
+                android:layout_height="@dimen/dp61"
+                android:padding="@dimen/dp8"
+                android:background='@{vm.pageType==PageType.USER?@drawable/chat_select_bg:null}'
+                android:onClick="@{()->click.changePageType(PageType.USER)}"
+                android:src="@{vm.pageType==PageType.USER?@drawable/chat_user_type_select:@drawable/chat_user_type}"
+                android:id="@+id/img_user"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_white_radius_5">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/view_pager"/>
+
+            <ImageView
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:padding="@dimen/dp5"
+                android:src="@mipmap/chat_close"
+                android:layout_alignParentRight="true"
+                android:onClick="@{()->click.closeClick()}"
+                android:layout_marginRight="@dimen/dp5"/>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

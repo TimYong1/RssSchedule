@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">车载辅轨系统</string>
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
+    <string name="required_permissions">缺少必须权限</string>
+    <string name="progress_dialog_registering_please_wait">registering,please wait</string>
+    <string name="progress_dialog_batch_register">progress: %d / %d</string>
+    <string name="app_exit">再按一次退出</string>
+    <!--各个界面获取权限失败时的提示-->
+    <string name="permission_denied">权限被拒绝！</string>
+    <string name="pref_speakerphone_default">auto</string>
+    <string name="pref_speakerphone_key">speakerphone_preference</string>
+    <string name="main_receiver">com.armslocker.x.main</string>
+    <string name="video_receiver">com.armslocker.x.video</string>
+    <string name="groups">编组</string>
+    <string name="back">返回</string>
+    <string name="settings_panel">设置面板</string>
+    <string name="device_id">设备ID</string>
+    <string name="setting">设置</string>
+    <string name="identifier">编号</string>
+    <string name="order_category">工单类别</string>
+    <string name="content">内容</string>
+    <string name="create_person">创建人</string>
+    <string name="executor_or_organization">执行人/组织</string>
+    <string name="time">时间</string>
+    <string name="operation">操作</string>
+    <string name="hidden_danger_report">隐患上报</string>
+    <string name="confirm">确 认</string>
+    <string name="reject">驳 回</string>
+    <string name="to_execute">去执行</string>
+    <string name="conductor">车长：</string>
+    <string name="dispatcher">调度员：</string>
+    <string name="receiving_driver">受令司机：</string>
+    <string name="locomotive_number">机车编号：</string>
+    <string name="status">状态：</string>
+    <string name="video_list">视频列表</string>
+    <string name="message">消息</string>
+    <string name="message_center">消息中心</string>
+    <string name="contacts">联系人</string>
+    <string name="historical_call">历史通话</string>
+    <string name="historical_msg">历史消息</string>
+    <string name="transfer_order_confirm">调令确认</string>
+    <string name="transfer_order_no">调令号：</string>
+
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="@dimen/dp24"
+            android:layout_height="@dimen/dp24"
+            android:text="A"
+            android:textSize="@dimen/ts16"
+            android:textColor="@color/white"
+            android:background="@drawable/chat_initials_bg"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginBottom="@dimen/dp9"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dp9"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp60">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/dp36"
+                android:layout_height="@dimen/dp36"
+                android:layout_marginLeft="@dimen/dp15"
+                android:background="@color/c_2495FF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp9"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="考勤助手"
+                android:textColor="@color/c_686868"
+                android:textSize="@dimen/ts14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+</layout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="click"
+            type="com.sx.trackdispatch.view.TrackMapFragment.ClickProxy" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.amap.api.maps.TextureMapView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map_view"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp50"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="@dimen/dp5"
+                android:onClick="@{()->click.messageClick()}">
+                <ImageView
+                    android:layout_width="@dimen/dp25"
+                    android:layout_height="@dimen/dp25"
+                    android:src="@mipmap/msg_icon"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/ts22"
+                    android:textColor="@color/c_2D76FF"
+                    android:text="@string/message"
+                    android:layout_marginLeft="@dimen/dp9"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="@dimen/dp5"
+                android:onClick="@{()->click.settingClick()}"
+                android:layout_marginLeft="@dimen/dp5">
+                <ImageView
+                    android:layout_width="@dimen/dp25"
+                    android:layout_height="@dimen/dp25"
+                    android:src="@mipmap/setting_icon"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/ts22"
+                    android:textColor="@color/c_FFA95E"
+                    android:text="@string/setting"
+                    android:layout_marginLeft="@dimen/dp9"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

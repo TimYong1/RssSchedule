@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp54"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="76.13"
+            android:text="01"
+            android:textColor="@color/c_A5A5A5"
+            android:gravity="center"
+            android:textSize="@dimen/ts18"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="75.44"
+            android:text="安全事件"
+            android:textColor="@color/c_A5A5A5"
+            android:gravity="center"
+            android:textSize="@dimen/ts18"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="75.44"
+            android:text="出现安全隐患"
+            android:textColor="@color/c_A5A5A5"
+            android:gravity="center"
+            android:textSize="@dimen/ts18"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="52"
+            android:text="小王"
+            android:textColor="@color/c_A5A5A5"
+            android:gravity="center"
+            android:textSize="@dimen/ts18"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="75"
+            android:text="小张"
+            android:textColor="@color/c_A5A5A5"
+            android:gravity="center"
+            android:textSize="@dimen/ts18"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="88"
+            android:text="2021-1-25"
+            android:textColor="@color/c_A5A5A5"
+            android:gravity="center"
+            android:textSize="@dimen/ts18"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="84"
+            android:text="@string/operation"
+            android:textColor="@color/c_A5A5A5"
+            android:gravity="center"
+            android:textSize="@dimen/ts18"/>
+    </LinearLayout>
+</layout>

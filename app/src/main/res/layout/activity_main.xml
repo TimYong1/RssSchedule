@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.sx.trackdispatch.viewmodel.MainViewModel" />
+
+        <variable
+            name="click"
+            type="com.sx.trackdispatch.view.MainActivity.ClickProxy" />
+
+        <import type="android.view.View" />
+
+        <import type="android.graphics.Color" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.example.common.view.NoScrollViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp180"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/c_42000000"
+            tools:ignore="MissingConstraints" />
+
+        <LinearLayout
+            android:id="@+id/ll_nav"
+            android:layout_width="@dimen/dp180"
+            android:layout_height="match_parent"
+            android:background="@drawable/navigation_bg"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{()->click.tabClick(0)}"
+                android:background="@{vm.position==0?@drawable/tab_item_select:@drawable/tab_item}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="@dimen/dp42"
+                    android:layout_height="@dimen/dp42"
+                    android:padding="@dimen/dp7"
+                    android:src="@{vm.position==0?vm.menuList.get(0).iconSelect:vm.menuList.get(0).icon}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@{vm.menuList.get(0).title}"
+                    android:textColor='@{vm.position==0?@color/white:@color/c_6DA0FF}'
+                    android:textSize="@dimen/ts18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{()->click.tabClick(1)}"
+                android:background="@{vm.position==1?@drawable/tab_item_select:@drawable/tab_item}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img2"
+                    android:layout_width="@dimen/dp42"
+                    android:layout_height="@dimen/dp42"
+                    android:padding="@dimen/dp7"
+                    android:src="@{vm.position==1?vm.menuList.get(1).iconSelect:vm.menuList.get(1).icon}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@{vm.menuList.get(1).title}"
+                    android:textColor='@{vm.position==1?@color/white:@color/c_6DA0FF}'
+                    android:textSize="@dimen/ts18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{()->click.tabClick(2)}"
+                android:orientation="vertical"
+                android:background="@{vm.position==2?@drawable/tab_item_select:@drawable/tab_item}"
+                >
+
+                <ImageView
+                    android:id="@+id/img3"
+                    android:layout_width="@dimen/dp42"
+                    android:layout_height="@dimen/dp42"
+                    android:padding="@dimen/dp7"
+                    android:src="@{vm.position==2?vm.menuList.get(2).iconSelect:vm.menuList.get(2).icon}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@{vm.menuList.get(2).title}"
+                    android:textColor='@{vm.position==2?@color/white:@color/c_6DA0FF}'
+                    android:textSize="@dimen/ts18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{()->click.tabClick(3)}"
+                android:background="@{vm.position==3?@drawable/tab_item_select:@drawable/tab_item}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img4"
+                    android:layout_width="@dimen/dp42"
+                    android:layout_height="@dimen/dp42"
+                    android:padding="@dimen/dp7"
+                    android:src="@{vm.position==3?vm.menuList.get(3).iconSelect:vm.menuList.get(3).icon}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@{vm.menuList.get(3).title}"
+                    android:textColor='@{vm.position==3?@color/white:@color/c_6DA0FF}'
+                    android:textSize="@dimen/ts18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="@{()->click.tabClick(4)}"
+                android:background="@{vm.position==4?@drawable/tab_item_select:@drawable/tab_item}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img5"
+                    android:layout_width="@dimen/dp42"
+                    android:layout_height="@dimen/dp42"
+                    android:padding="@dimen/dp7"
+                    android:src="@{vm.position==4?vm.menuList.get(4).iconSelect:vm.menuList.get(4).icon}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@{vm.menuList.get(4).title}"
+                    android:textColor='@{vm.position==4?@color/white:@color/c_6DA0FF}'
+                    android:textSize="@dimen/ts18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@{vm.position==5?@drawable/tab_item_select:@drawable/tab_item}"
+                android:onClick="@{()->click.tabClick(5)}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img6"
+                    android:layout_width="@dimen/dp42"
+                    android:layout_height="@dimen/dp42"
+                    android:padding="@dimen/dp7"
+                    android:src="@{vm.position==5?vm.menuList.get(5).iconSelect:vm.menuList.get(5).icon}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:text="@{vm.menuList.get(5).title}"
+                    android:textColor='@{vm.position==5?@color/white:@color/c_6DA0FF}'
+                    android:textSize="@dimen/ts18" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

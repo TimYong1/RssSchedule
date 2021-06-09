@@ -1,0 +1,6 @@
+include ':map'
+include ':common'
+include ':base'
+include ':app'
+include ':easyfloat'
+rootProject.name = "track-dispatch"

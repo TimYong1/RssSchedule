@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_message"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/top_left_circle_white"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text=""
+                android:textColor="@color/c666666"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/c_ddd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00ffffff"
+                android:orientation="horizontal"
+                android:id="@+id/ll_double">
+
+                <TextView
+                    android:id="@+id/tv_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/dialog_bottom_left_radius"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="取消"
+                    android:textColor="#999999"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/c_ddd" />
+
+                <TextView
+                    android:id="@+id/tv_ensure"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/dialog_bottom_right_radius"
+                    android:gravity="center"
+                    android:text="确定"
+                    android:textColor="#019EF2"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp44"
+                android:gravity="center"
+                android:id="@+id/tv_single_btn"
+                android:text="确定"
+                android:textColor="#019EF2"
+                android:background="@drawable/dialog_bottom_radius_bg_white"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

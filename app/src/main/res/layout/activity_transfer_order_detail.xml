@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="backClick"
+            type="android.view.View.OnClickListener" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/include_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp24"
+            android:layout_marginTop="@dimen/dp62"
+            app:click="@{backClick}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp24"
+            android:layout_marginTop="38dp"
+            android:text="调令编号：202105060002号"
+            android:textColor="@color/c_2D76FF"
+            android:textSize="@dimen/ts22" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp24"
+            android:layout_marginTop="@dimen/dp24"
+            android:layout_marginRight="@dimen/dp24"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text='@{@string/conductor+"张三"}'
+                android:textColor="@color/c_979797"
+                android:textSize="@dimen/ts17" />
+
+            <LinearLayout
+                android:layout_width="@dimen/dp65"
+                android:layout_height="@dimen/dp24"
+                android:layout_gravity="end"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/voice_play_btn"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dp10"
+                    android:layout_height="@dimen/dp10"
+                    android:layout_marginLeft="5dp"
+                    android:src="@mipmap/voice_playback" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1:58"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/ts10" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp24"
+            android:layout_marginTop="@dimen/dp16"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/status"
+                android:textColor="@color/c_979797"
+                android:textSize="@dimen/ts17" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="待确认"
+                android:textColor="@color/c_1ED5E3"
+                android:textSize="@dimen/ts17" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp24"
+            android:layout_marginTop="@dimen/dp16"
+            android:text='@{@string/dispatcher+"张三"}'
+            android:textColor="@color/c_979797"
+            android:textSize="@dimen/ts17" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp24"
+            android:layout_marginTop="@dimen/dp16"
+            android:text='@{@string/receiving_driver+"张三"}'
+            android:textColor="@color/c_979797"
+            android:textSize="@dimen/ts17" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp24"
+            android:layout_marginTop="@dimen/dp16"
+            android:text='@{@string/locomotive_number+"张三"}'
+            android:textColor="@color/c_979797"
+            android:textSize="@dimen/ts17" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp24"
+            android:layout_marginTop="@dimen/dp16"
+            android:layout_marginRight="@dimen/dp24"
+            android:paddingBottom="@dimen/dp10"
+            android:layout_weight="1"
+            android:text='列车001007于7:15从基地站DK200.000经西环左线运行至南岗站DK206.000进行卸枕木作业，返回经西环左线运行至基地站DK206.00 1.DK200.000至DK206.000间限速25km/h；岔区限速5km/h 2.列车运行中加强瞭望，保持联系，控制速度，保证安全 3、列车必须在岔道线一度停车去人是否有钩锁器，近路是否正确后方可通过。'
+            android:textColor="@color/c_979797"
+            android:textSize="@dimen/ts17"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/dp40"
+            android:layout_marginRight="@dimen/dp30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/transfer_order_confirm_btn"
+                android:paddingLeft="@dimen/dp18"
+                android:paddingTop="@dimen/dp5"
+                android:paddingRight="@dimen/dp18"
+                android:paddingBottom="@dimen/dp5"
+                android:text="@string/confirm"
+                android:textColor="@color/white"
+                android:textSize="@dimen/ts20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp21"
+                android:background="@drawable/transfer_order_reject_btn"
+                android:paddingLeft="@dimen/dp18"
+                android:paddingTop="@dimen/dp5"
+                android:paddingRight="@dimen/dp18"
+                android:paddingBottom="@dimen/dp5"
+                android:text="@string/reject"
+                android:textColor="@color/c_2D76FF"
+                android:textSize="@dimen/ts20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/transfer_order_confirm_btn"
+                android:paddingLeft="@dimen/dp18"
+                android:paddingTop="@dimen/dp5"
+                android:paddingRight="@dimen/dp18"
+                android:paddingBottom="@dimen/dp5"
+                android:text="@string/to_execute"
+                android:textColor="@color/white"
+                android:textSize="@dimen/ts20" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.sx.trackdispatch.viewmodel.TransferOrderViewModel" />
+        <variable
+            name="adapter"
+            type="com.sx.trackdispatch.adapter.TransferOrderAdapter" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp52"
+        android:paddingBottom="@dimen/dp30">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="com.kunminx.binding_recyclerview.layout_manager.WrapContentLinearLayoutManager"
+            tools:listitem="@layout/item_transfer_order"
+            adapter="@{adapter}"
+            notifyCurrentListChanged="@{vm.notifyCurrentListChanged}"
+            submitList="@{vm.list}"/>
+    </LinearLayout>
+</layout>

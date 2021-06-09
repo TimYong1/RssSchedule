@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+    </data>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:paddingTop="@dimen/dp4"
+        android:paddingBottom="@dimen/dp4"
+        android:background="@drawable/shape_setting_borde"
+        android:onClick="@{click}">
+
+        <ImageView
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:src="@mipmap/setting_icon"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/setting"
+            android:textSize="@dimen/ts22"
+            android:textColor="@color/c_FFA95E"
+            android:layout_marginLeft="@dimen/dp5"
+            />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60"
+        >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/dp36"
+            android:layout_height="@dimen/dp36"
+            android:background="@color/c_2495FF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="@dimen/dp15"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp9"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="考勤助手"
+            android:textColor="@color/c_686868"
+            android:textSize="@dimen/ts14"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="考勤助手"
+            android:textColor="@color/c_aaaaaa"
+            android:layout_marginLeft="@dimen/dp9"
+            android:textSize="@dimen/ts10"
+            android:lines="1"
+            android:ellipsize="end"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_width="@dimen/dp14"
+            android:layout_height="@dimen/dp14"
+            android:layout_marginRight="@dimen/dp5"
+            android:background="@drawable/circular_red"
+            android:gravity="center"
+            android:text="15"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ts10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/dp5"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

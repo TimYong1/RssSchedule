@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 无色 -->
+    <color name="no_color">#00000000</color>
+    <color name="pureblack">#ff000000</color>
+    <color name="gray">#c8c8c8</color>
+    <color name="gray_text">#adadad</color>
+    <color name="red">#bd2228</color>
+<!--    <color name="colorPrimary">#3F51B5</color>-->
+<!--    <color name="colorPrimaryDark">#303F9F</color>-->
+<!--    <color name="colorAccent">#FF4081</color>-->
+    <color name="transport">#00000000</color>
+    <color name="c000000_70">#AF000000</color>
+    <color name="c333333">#333333</color>
+    <color name="c666666">#666666</color>
+    <color name="c999999">#999999</color>
+
+    <color name="ccccccc">#CCCCCC</color>
+    <color name="ceeeeee">#EEEEEE</color>
+    <color name="cefefef">#EFEFEF</color>
+    <color name="ce3896f">#E3B96F</color>
+    <color name="c1e1f33">#1E1F33</color>
+    <color name="c11121e">#11121E</color>
+    <color name="c00b28f">#00B28F</color>
+    <color name="cff3e59">#FF3E59</color>
+    <color name="ce9cd9a">#E9CD9A</color>
+    <color name="c002373">#002373</color>
+    <color name="c00caef">#00CAEF</color>
+    <color name="c5822b4">#5822B4</color>
+    <color name="ce3b96f">#E3B96F</color>
+    <color name="c45a1ff">#45A1FF</color>
+    <color name="cf4f5f6">#F4F5F6</color>
+    <color name="c5b1cb2">#5B1CB2</color>
+
+    <color name="c1c1c1e">#1C1C1E</color>
+    <color name="c313136">#313136</color>
+    <color name="c0a84ff">#0A84FF</color>
+    <color name="c38383e">#38383E</color>
+    <color name="cf8b91a">#F8B91A</color>
+    <color name="c000000">#000000</color>
+    <color name="c5e6172">#5E6172</color>
+    <color name="c191b22">#191B22</color>
+    <color name="c3fa2ff">#3FA2FF</color>
+    <color name="c3f4259">#3F4259</color>
+    <color name="c44465d">#44465D</color>
+    <color name="c3f3f4a">#3F3F4A</color>
+    <color name="c3d404b">#3D404B</color>
+    <color name="c292f53">#292F53</color>
+</resources>
