@@ -8,6 +8,7 @@
         <variable
             name="itemClick"
             type="com.sx.trackdispatch.adapter.FileAdapter.ItemClickListener" />
+        <import type="com.sx.base.utils.FileUtils"/>
     </data>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -24,7 +25,9 @@
                 android:layout_width="@dimen/dp120"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="作业计划表.PDF"
+                android:text="@{FileUtils.INSTANCE.getName(bean)}"
+                android:lines="1"
+                android:ellipsize="end"
                 android:textSize="@dimen/ts16"
                 android:layout_marginLeft="@dimen/dp20"
                 android:textColor="@color/c_61B3FF"/>

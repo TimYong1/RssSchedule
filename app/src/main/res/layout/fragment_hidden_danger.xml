@@ -37,7 +37,8 @@
             android:layout_marginTop="@dimen/dp37"
             android:layout_marginBottom="@dimen/dp20"
             android:id="@+id/ll_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/hidden_danger_rc_borde">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp54"
@@ -63,7 +64,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="75.44"
+                    android:layout_weight="79.44"
                     android:text="@string/content"
                     android:textColor="@color/white"
                     android:gravity="center"
@@ -107,7 +108,6 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/hidden_danger_rc_borde"
                 app:layoutManager="com.kunminx.binding_recyclerview.layout_manager.WrapContentLinearLayoutManager"
                 tools:listitem="@layout/item_hidden_danger"
                 adapter="@{adapter}"
@@ -119,7 +119,7 @@
             android:layout_height="@dimen/dp50"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginBottom="58dp"
+            android:layout_marginBottom="@dimen/dp30"
             android:layout_marginRight="@dimen/dp42"
             android:layout_gravity="end"
             android:background="@drawable/hidden_danger_report_btn">

@@ -17,6 +17,9 @@ import com.sx.trackdispatch.R
 import com.sx.trackdispatch.databinding.FragmentTrackMapBinding
 import com.sx.trackdispatch.dialog.ChatBoxDialog
 import com.sx.trackdispatch.viewmodel.TrackMapViewModel
+import com.xdf.map.BitMapUtils
+import com.xdf.tts.SpeechUtils
+import java.lang.Exception
 import java.util.*
 
 
@@ -43,20 +46,36 @@ class TrackMapFragment : BaseFragment<FragmentTrackMapBinding,TrackMapViewModel>
         uiSetting = aMap.uiSettings
         uiSetting.setMyLocationButtonEnabled(false) // 是否显示默认的定位按钮
         aMap.setMyLocationEnabled(true)
+//        mViewModel.lines.value.javaClass.
+//        var angle = 10F
+//        aMap.setOnMapClickListener {
+//            angle+=10
+//            aMap.setMyLocationRotateAngle(angle)
+//            aMap.moveCamera(CameraUpdateFactory.changeBearing(angle))
+//        }
+
+//        aMap.setOnMapClickListener {
+//            aMap.setMyLocationRotateAngle(mineAngle.toFloat())
+//            aMap.moveCamera(CameraUpdateFactory.changeBearing(mineAngle.toFloat()))
+//        }
+
         myLocationStyle = MyLocationStyle()
+//        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(R.mipmap.gps_point))
+        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(R.mipmap.track_map_select))
+        // 自定义精度范围的圆形边框颜色
+//        myLocationStyle.strokeColor(STROKE_COLOR)
+        //自定义精度范围的圆形边框宽度
+        myLocationStyle.strokeWidth(5F)
+        // 设置圆形的填充颜色0
+//        myLocationStyle.radiusFillColor(FILL_COLOR)
         aMap.myLocationStyle = myLocationStyle
-        // 定位、但不会移动到地图中心点，并且会跟随设备移动。
-        aMap.setMyLocationStyle(myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_MAP_ROTATE_NO_CENTER))
+        //追随
+        aMap.setMyLocationStyle(myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE))
+
+        aMap.moveCamera(CameraUpdateFactory.changeLatLng(mViewModel.lines.value?.get(0)))
     }
 
     private fun initLine(){
-        var latitude = 28.213675
-        var longitude = 112.891641
-        //四个点
-        val A = LatLng(latitude , longitude)
-        val B = LatLng(latitude + 1, longitude + 1)
-        val C = LatLng(latitude + 2, longitude + 2)
-        val D = LatLng(latitude + 3, longitude + 3)
         //用一个数组来存放纹理
         val texTuresList: MutableList<BitmapDescriptor> = ArrayList()
         texTuresList.add(BitmapDescriptorFactory.fromResource(R.mipmap.map_alr))
@@ -66,7 +85,9 @@ class TrackMapFragment : BaseFragment<FragmentTrackMapBinding,TrackMapViewModel>
         val options = PolylineOptions()
         options.width(20f) //设置宽度
         //加入四个点
-        options.add(A, B, C, D)
+        mViewModel.lines1.value?.forEach {
+            options.add(it)
+        }
         //加入对应的颜色,使用setCustomTextureList 即表示使用多纹理；
         options.customTextureList = texTuresList
         //设置纹理对应的Index
@@ -74,16 +95,16 @@ class TrackMapFragment : BaseFragment<FragmentTrackMapBinding,TrackMapViewModel>
         aMap.addPolyline(options)
     }
 
-    //定位
     private fun initLoc() {
-        //初始化定位
         mLocationClient = AMapLocationClient(this.activity?.application)
-        //设置定位回调监听
         mLocationClient.setLocationListener(this)
-        //初始化定位参数
         mLocationOption = AMapLocationClientOption()
         //设置定位模式为高精度模式，Battery_Saving为低功耗模式，Device_Sensors是仅设备模式
         mLocationOption.locationMode = AMapLocationClientOption.AMapLocationMode.Hight_Accuracy
+        // 可选，设置是否gps优先，只在高精度模式下有效。默认关闭
+        mLocationOption.isGpsFirst = true
+        // 可选，设置是否使用传感器。默认是false
+        mLocationOption.isSensorEnable = true
         //设置是否返回地址信息（默认返回地址信息）
         mLocationOption.isNeedAddress = true
         //设置是否只定位一次,默认为false
@@ -96,7 +117,6 @@ class TrackMapFragment : BaseFragment<FragmentTrackMapBinding,TrackMapViewModel>
         mLocationOption.interval = 2000
         //给定位客户端对象设置定位参数
         mLocationClient.setLocationOption(mLocationOption)
-        //启动定位
         mLocationClient.startLocation()
     }
 
@@ -108,15 +128,22 @@ class TrackMapFragment : BaseFragment<FragmentTrackMapBinding,TrackMapViewModel>
             chatBoxDialog.show()
         }
         fun settingClick(){
-
+            startActivity(Intent(this@TrackMapFragment.context,SettingActivity::class.java))
         }
     }
 
     override fun onLocationChanged(location: AMapLocation) {
         var latlng = LatLng(location.latitude,location.longitude)
         aMap.moveCamera(CameraUpdateFactory.changeLatLng(latlng))
+        val latlnga = mViewModel.lines.value?.get(0)
+        val latlngb = mViewModel.lines.value?.get(1)
+        val mineAngle = BitMapUtils.TwoCoordinateAzimuth(latlnga?.latitude!!,latlnga.longitude,latlngb?.latitude!!,latlngb.longitude)
+//        LogUtil.d(mineAngle.toString())
+        aMap.setMyLocationRotateAngle(mineAngle.toFloat())
+        aMap.moveCamera(CameraUpdateFactory.changeBearing(mineAngle.toFloat()+45))
 //        aMap.moveCamera(CameraUpdateFactory.zoomTo(12));
 //        LogUtil.d("经纬度变化-->latitude:"+location?.latitude+"  longitude:"+location?.longitude)
+//        LogUtil.d("速度-->"+location.speed)
     }
 
     override fun onResume() {
@@ -131,7 +158,12 @@ class TrackMapFragment : BaseFragment<FragmentTrackMapBinding,TrackMapViewModel>
 
     override fun onDestroy() {
         super.onDestroy()
-        binding.mapView.onDestroy()
+        try {
+            binding.mapView.onDestroy()
+        }catch (e:Exception){
+
+        }
+
     }
 
     override fun getLayoutId(): Int {

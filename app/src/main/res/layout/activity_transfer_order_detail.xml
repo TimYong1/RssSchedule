@@ -55,8 +55,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="@dimen/dp10"
-                    android:layout_height="@dimen/dp10"
+                    android:layout_width="@dimen/dp15"
+                    android:layout_height="@dimen/dp15"
                     android:layout_marginLeft="5dp"
                     android:src="@mipmap/voice_playback" />
 

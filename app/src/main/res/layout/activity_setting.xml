@@ -99,7 +99,7 @@
                 android:textColor="@color/c_5e5e5e"
                 android:gravity="center_vertical"
                 android:text="HK562666"
-                android:drawableRight="@mipmap/arrow_open"
+                android:drawableRight="@mipmap/down"
                 android:layout_marginRight="@dimen/dp10"
                 android:layout_marginLeft="@dimen/dp30"/>
         </LinearLayout>

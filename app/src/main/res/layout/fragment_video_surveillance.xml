@@ -10,6 +10,9 @@
         <variable
             name="adapter"
             type="com.sx.trackdispatch.adapter.VideoAdapter" />
+        <variable
+            name="click"
+            type="com.sx.trackdispatch.view.VideoSurveillanceFragment.ClickProxy" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,6 +30,7 @@
                 android:id="@+id/player_ui"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
+                android:onClick="@{()->click.videoClick()}"
                 android:background="#FF000000"
                 />
         </LinearLayout>

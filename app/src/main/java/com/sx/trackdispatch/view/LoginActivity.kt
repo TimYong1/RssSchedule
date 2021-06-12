@@ -3,12 +3,15 @@ package com.sx.trackdispatch.view
 import android.content.Intent
 import com.example.common.utils.LogUtil
 import com.sx.base.BaseActivity
+import com.sx.base.net.HttpBaseObserver
 import com.sx.base.net.HttpUtil
 import com.sx.trackdispatch.R
 import com.sx.trackdispatch.adapter.DialogListAdapter
 import com.sx.trackdispatch.api.Api
 import com.sx.trackdispatch.databinding.ActivityLoginBinding
 import com.sx.trackdispatch.dialog.ListDialog
+import com.sx.trackdispatch.dialog.LoadingDialog
+import com.sx.trackdispatch.model.ProjectItem
 import com.sx.trackdispatch.viewmodel.LoginViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -16,19 +19,29 @@ import io.reactivex.schedulers.Schedulers
 class LoginActivity: BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     private lateinit var listDialog: ListDialog
     private lateinit var api:Api
-
+    private lateinit var loadingDialog: LoadingDialog
     override fun init() {
         binding.vm = mViewModel
         binding.click = ClickProxy()
         listDialog = ListDialog(this)
         initListener()
         api = HttpUtil.getRetrofit().create(Api::class.java)
+//        loadingDialog = LoadingDialog.Builder().create(this)
+//        loadingDialog.show()
+        api.getProjectItem(1, 294).subscribeOn(Schedulers.io()) // 上面 异步
+            .observeOn(AndroidSchedulers.mainThread()) // 下面 主线程
+            .subscribe (object : HttpBaseObserver<ProjectItem>(){
+                override fun succeed(t: ProjectItem?) {
+                    LogUtil.d("网络请求返回了"+t.toString())
+//                    loadingDialog.dismiss()
+                }
 
-//        api.getProjectItem(1, 294).subscribeOn(Schedulers.io()) // 上面 异步
-//            .observeOn(AndroidSchedulers.mainThread()) // 下面 主线程
-//            .subscribe {
-//                LogUtil.d("网络请求返回了"+it.toString())
-//            }
+                override fun failed(e: Throwable?) {
+                    LogUtil.d("网络请求失败：${e?.message}")
+//                    loadingDialog.dismiss()
+                }
+            })
+//        LogUtil.d("网络请求返回了"+it.toString())
     }
 
     private fun initListener(){

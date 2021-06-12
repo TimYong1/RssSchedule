@@ -10,13 +10,24 @@
         <variable
             name="adapter"
             type="com.sx.trackdispatch.adapter.TransferOrderAdapter" />
+        <variable
+            name="settingClick"
+            type="android.view.View.OnClickListener" />
     </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="@dimen/dp52"
         android:paddingBottom="@dimen/dp30">
+        <include
+            layout="@layout/include_setting"
+            android:layout_gravity="end"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp54"
+            app:click="@{settingClick}"
+            />
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -11,7 +11,7 @@ class LogUtil{
         }
 
         fun e(content:String){
-            Log.e(TAG,content)
+            Log.e(TAG,"-----------------------------"+content+"-----------------------------")
         }
 
         fun v(content:String){

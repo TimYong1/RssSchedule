@@ -102,7 +102,6 @@ object EasyFloat : Application.ActivityLifecycleCallbacks {
                     EnFloatingView(activity, mLayout)
                 )
             }
-            Log.d("测试","marginLeft："+marginLeft)
 //            FloatingView.get().setMarginLeft(marginLeft)
             FloatingView.get().layoutParams(mLayoutParams)
             FloatingView.get().attach(it)

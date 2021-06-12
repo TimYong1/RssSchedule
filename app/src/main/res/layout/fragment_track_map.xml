@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -27,6 +28,8 @@
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:padding="@dimen/dp5"
+                android:visibility="gone"
+                tools:visibility="visible"
                 android:onClick="@{()->click.messageClick()}">
                 <ImageView
                     android:layout_width="@dimen/dp25"

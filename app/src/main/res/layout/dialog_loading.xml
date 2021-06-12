@@ -17,7 +17,7 @@
                 android:layout_width="@dimen/dp40"
                 android:layout_height="@dimen/dp40"
                 android:id="@+id/img_loading"
-                android:src="@mipmap/loding"
+                android:src="@mipmap/loading"
                 />
             <TextView
                 android:layout_width="wrap_content"

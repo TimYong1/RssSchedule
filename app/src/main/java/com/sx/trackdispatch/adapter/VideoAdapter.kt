@@ -8,14 +8,23 @@ import com.sx.trackdispatch.databinding.ItemHiddenDangerBinding
 import com.sx.trackdispatch.databinding.ItemVideoBinding
 
 class VideoAdapter: SimpleDataBindingAdapter<String, ItemVideoBinding> {
+    var itemClickListener:ItemClickListener
 
-    constructor(context: Context?) : super(context, R.layout.item_video, DiffUtils.instance.getVideoCallback()!!)
+    constructor(context: Context?,litener:ItemClickListener) : super(context, R.layout.item_video, DiffUtils.instance.getVideoCallback()!!){
+        this.itemClickListener = litener
+    }
 
     override fun onBindItem(
             binding: ItemVideoBinding,
             item: String,
             holder: RecyclerView.ViewHolder
     ) {
-//        binding.bean = item
+        binding.itemParent.setOnClickListener {
+            itemClickListener.click(item)
+        }
+    }
+
+    interface ItemClickListener{
+        fun click(bean:String)
     }
 }

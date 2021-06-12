@@ -82,6 +82,7 @@ dependencies {
     implementation project(path: ':easyfloat')
     implementation 'com.contrarywind:Android-PickerView:4.1.9'
     implementation project(path: ':map')
+    implementation project(path: ':tts')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -92,4 +93,6 @@ dependencies {
     implementation 'com.ezviz.sdk:ezuikit:2.2.1'
     //悬浮框
 //    implementation 'io.github.shenzhen2017:easyfloat:1.0.1'
+    //文件选择
+    implementation 'com.droidninja:filepicker:2.2.5'
 }

@@ -36,5 +36,6 @@ class TransferOrderAdapter: SimpleDataBindingAdapter<String, ItemTransferOrderBi
         fun confirm(bean:String)
         fun reject()
         fun execute()
+        fun speak(content:String)
     }
 }

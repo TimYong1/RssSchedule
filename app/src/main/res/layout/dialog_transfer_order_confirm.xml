@@ -13,10 +13,18 @@
         <variable
             name="layoutManage"
             type="androidx.recyclerview.widget.GridLayoutManager" />
+        <variable
+            name="click"
+            type="com.sx.trackdispatch.dialog.TransferOrderConfirmDialog.ClickProxy" />
     </data>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/dp600"
-        android:layout_height="@dimen/dp500"
+        android:layout_height="@dimen/dp450"
         android:background="@drawable/shape_white_radius_5"
         android:focusable="true"
         android:focusableInTouchMode="true">
@@ -69,15 +77,17 @@
 
         <CheckBox
             android:id="@+id/checkBox"
-            android:layout_width="@dimen/dp30"
-            android:layout_height="@dimen/dp30"
+            android:layout_width="@dimen/dp34"
+            android:layout_height="@dimen/dp34"
             android:layout_marginLeft="@dimen/dp10"
             android:gravity="center"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
             app:layout_constraintBottom_toBottomOf="@+id/text2"
             app:layout_constraintLeft_toRightOf="@+id/text2"
-            app:layout_constraintTop_toTopOf="@+id/text2" />
+            app:layout_constraintTop_toTopOf="@+id/text2"
+            android:onClick='@{()->click.checkBox(true)}'
+            android:checked="@{vm.confirmeState}"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -92,12 +102,14 @@
 
         <CheckBox
             android:id="@+id/checkBox1"
-            android:layout_width="@dimen/dp30"
-            android:layout_height="@dimen/dp30"
+            android:layout_width="@dimen/dp34"
+            android:layout_height="@dimen/dp34"
             android:layout_marginLeft="@dimen/dp20"
             android:gravity="center"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:onClick='@{()->click.checkBox(false)}'
+            android:checked="@{!vm.confirmeState}"
             app:layout_constraintBottom_toBottomOf="@+id/text3"
             app:layout_constraintLeft_toRightOf="@+id/text3"
             app:layout_constraintTop_toTopOf="@+id/text3"
@@ -151,7 +163,8 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/dp16"
             android:id="@+id/text6"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/editText"
+            android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="@dimen/dp400"
@@ -163,7 +176,8 @@
             adapter="@{adapter}"
             notifyCurrentListChanged="@{vm.notifyCurrentListChanged}"
             app:layoutManager="@{layoutManage}"
-            submitList="@{vm.list}"/>
+            submitList="@{vm.fileList}"
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -175,6 +189,7 @@
             android:layout_marginLeft="@dimen/dp23"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/dp10"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/recyclerview" />
 
         <LinearLayout
@@ -183,7 +198,7 @@
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text7"
+            app:layout_constraintTop_toBottomOf="@+id/editText"
             android:layout_marginTop="@dimen/dp20"
             android:paddingBottom="@dimen/dp20">
 
@@ -209,4 +224,5 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

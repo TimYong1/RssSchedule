@@ -1,5 +1,7 @@
 package com.sx.trackdispatch.view
 
+import android.content.Intent
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Chronometer
@@ -13,17 +15,20 @@ import com.sx.trackdispatch.viewmodel.MainViewModel
 import com.sx.base.BaseActivity
 import com.sx.trackdispatch.adapter.MainViewPagerAdapter
 import com.sx.trackdispatch.dialog.CallDialog
+import com.xdf.tts.SpeechUtils
 import com.zj.easyfloat.EasyFloat
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private lateinit var chronometer:Chronometer
     private var callDialog:CallDialog?=null
+    private lateinit var pagerAdapter: MainViewPagerAdapter
 
     override fun init() {
         binding.vm = mViewModel
         binding.click = ClickProxy()
         initListener()
-        initFloatView()
+//        initFloatView()
+
     }
 
     private fun showCallDialog(){
@@ -38,7 +43,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     private fun initListener() {
-        binding.pager.adapter = MainViewPagerAdapter(this.supportFragmentManager,0)
+        pagerAdapter = MainViewPagerAdapter(this.supportFragmentManager,0)
+        binding.pager.adapter = pagerAdapter
         mViewModel.position.observe(this, Observer {
             binding.pager.setCurrentItem(it)
         })
@@ -75,7 +81,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if(hasFocus){
-            EasyFloat.setMarginLeft(binding.llNav.measuredWidth)
+//            EasyFloat.setMarginLeft(binding.llNav.measuredWidth)
         }
     }
 
@@ -105,5 +111,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         callDialog!!.apply {
             changeStatus(CallDialog.State.CONNECTED)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        pagerAdapter.fragments[binding.pager.currentItem].onActivityResult(requestCode, resultCode, data)
     }
 }

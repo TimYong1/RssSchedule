@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import com.sx.trackdispatch.R
 import com.sx.trackdispatch.databinding.DialogLoadingBinding
 
-class LoadingDialog(context: Context, themeResId: Int) : Dialog(context, themeResId) {
+class LoadingDialog (context: Context, themeResId: Int) : Dialog(context, themeResId) {
     private var binding: DialogLoadingBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_loading,null,false)
 
     override fun onCreate(savedInstanceState: Bundle?) {

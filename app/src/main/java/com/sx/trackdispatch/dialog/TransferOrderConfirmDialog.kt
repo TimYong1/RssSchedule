@@ -3,6 +3,7 @@ package com.sx.trackdispatch.dialog
 import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Window
@@ -14,6 +15,9 @@ import com.sx.trackdispatch.R
 import com.sx.trackdispatch.adapter.FileAdapter
 import com.sx.trackdispatch.databinding.DialogTransferOrderConfirmBinding
 import com.sx.trackdispatch.viewmodel.DialogTransferOrderConfirmViewModel
+import com.util.toast.ToastUtils
+import droidninja.filepicker.FilePickerBuilder
+import droidninja.filepicker.models.sort.SortingTypes
 
 class TransferOrderConfirmDialog(val activity: Activity, val lifecycle: LifecycleOwner, themeResId: Int) : Dialog(activity, themeResId) {
     private var binding: DialogTransferOrderConfirmBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_transfer_order_confirm,null,false)
@@ -27,18 +31,50 @@ class TransferOrderConfirmDialog(val activity: Activity, val lifecycle: Lifecycl
         binding.vm = vm
         binding.adapter = FileAdapter(activity,itemClick)
         binding.layoutManage = GridLayoutManager(activity,2)
+        binding.click = ClickProxy()
     }
 
     private val itemClick = object:FileAdapter.ItemClickListener{
         override fun add() {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.setType("*/*");//无类型限制
-            intent.addCategory(Intent.CATEGORY_OPENABLE);
-            activity.startActivityForResult(intent, 1);
+            pickerFile()
         }
 
         override fun delete(bean: String) {
+            val fileList = mutableListOf<String>()
+            fileList.addAll(vm.fileList.value!!)
+            fileList.remove(bean)
+            vm.fileList.value = fileList
+        }
+    }
 
+    fun getViewModel():DialogTransferOrderConfirmViewModel{
+        return vm
+    }
+
+    private fun pickerFile(){
+        if(vm.fileList.value!!.size>vm.MAX_FILE_SIZE.value!!){
+            ToastUtils.show("文件数量不能超过${vm.MAX_FILE_SIZE}份")
+            return
+        }
+        FilePickerBuilder.instance
+            .setMaxCount(1)
+            .setSelectedFiles(vm.fileUrls.value!!)
+            .setActivityTheme(R.style.FilePickerTheme)
+            .setActivityTitle("Please select doc")
+            .setImageSizeLimit(5) //Provide Size in MB
+            .setVideoSizeLimit(20)
+//                    .addFileSupport("ZIP", zips)
+//                    .addFileSupport("AAC", pdfs, R.drawable.pdf_blue)
+            .enableDocSupport(true)
+            .enableSelectAll(true)
+            .sortDocumentsBy(SortingTypes.NAME)
+            .withOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+            .pickFile(activity)
+    }
+
+    inner class ClickProxy{
+        fun checkBox(checked: Boolean){
+            vm.confirmeState.value = checked
         }
     }
 

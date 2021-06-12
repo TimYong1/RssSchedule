@@ -84,10 +84,12 @@
                 android:layout_marginBottom="6dp"
                 android:layout_gravity="end"
                 android:gravity="center"
-                android:background="@drawable/voice_play_btn">
+                android:id="@+id/ll_speak"
+                android:background="@drawable/voice_play_btn"
+                android:onClick="@{()->itemClick.speak(bean)}">
                 <ImageView
-                    android:layout_width="@dimen/dp10"
-                    android:layout_height="@dimen/dp10"
+                    android:layout_width="@dimen/dp15"
+                    android:layout_height="@dimen/dp15"
                     android:src="@mipmap/voice_playback"
                     android:layout_marginLeft="5dp"/>
                 <TextView

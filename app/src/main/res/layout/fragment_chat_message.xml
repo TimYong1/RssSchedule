@@ -78,7 +78,10 @@
                 adapter="@{msgAdapter}"
                 notifyCurrentListChanged="@{vm.notifyContentCurrentListChanged}"
                 submitList="@{vm.listContent}"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="#e1e1e1"
+                android:paddingBottom="@dimen/dp10"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"

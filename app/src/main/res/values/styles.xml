@@ -99,4 +99,7 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <style name="FilePickerTheme" parent="LibAppTheme">
+    </style>
+
 </resources>
