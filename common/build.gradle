@@ -62,4 +62,5 @@ dependencies {
     api "com.squareup.retrofit2:converter-scalars:$rootProject.retrofitVersion"
     api "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
     api "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    api 'com.tencent:mmkv-static:1.2.10'
 }

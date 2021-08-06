@@ -10,6 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.ArmsLockerMVVM">
 
         <meta-data
@@ -17,9 +18,13 @@
             android:value="a88dbcf10087d23ef145e0b2785901a3"/>
         <service android:name="com.amap.api.location.APSService"/>
 
-        <activity android:name="com.sx.trackdispatch.view.MainActivity" />
-        <activity android:name="com.sx.trackdispatch.view.LoginActivity" />
-        <activity android:name="com.sx.trackdispatch.view.SplashActivity">
+        <activity android:name="com.sx.trackdispatch.view.MainActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"/>
+        <activity android:name="com.sx.trackdispatch.view.SelectProjectActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name="com.sx.trackdispatch.view.SplashActivity"
+            android:screenOrientation="landscape">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,8 +32,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.SettingActivity" />
-        <activity android:name=".view.TransferOrderDetailActivity" />
+        <activity android:name=".view.SettingActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".view.TransferOrderDetailActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".view.VideoFullActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".view.LoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.sx.trackdispatch.R
 import com.sx.trackdispatch.databinding.ActivitySplashBinding
-import com.util.toast.ToastUtils
 import pub.devrel.easypermissions.EasyPermissions
 import pub.devrel.easypermissions.PermissionRequest
 
@@ -70,7 +69,7 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
     }
 
     private fun authorizedPass(){
-        startActivity(Intent(this,LoginActivity::class.java))
+        startActivity(Intent(this,SelectProjectActivity::class.java))
         finish()
     }
 

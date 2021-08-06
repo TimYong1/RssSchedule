@@ -12,13 +12,14 @@
         <variable
             name="msgAdapter"
             type="com.sx.trackdispatch.adapter.ChatMsgContentAdapter" />
+        <import type="android.view.View"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="@dimen/dp132"
+            android:layout_width="@dimen/dp150"
             android:layout_height="match_parent"
             android:orientation="vertical">
             
@@ -46,11 +47,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/dp30"
+                android:id="@+id/recyclerview_list"
                 app:layoutManager="com.kunminx.binding_recyclerview.layout_manager.WrapContentLinearLayoutManager"
                 tools:listitem="@layout/item_chat_msg"
-                adapter="@{msgListAdapter}"
-                notifyCurrentListChanged="@{vm.notifyCurrentListChanged}"
-                submitList="@{vm.list}"
                 android:layout_marginTop="@dimen/dp18"/>
 
         </LinearLayout>
@@ -59,6 +58,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:focusable="true"
+            android:visibility="gone"
             android:focusableInTouchMode="true">
             <TextView
                 android:layout_width="match_parent"
@@ -128,6 +128,38 @@
                 android:background="@drawable/msg_send_btn"
                 android:layout_marginBottom="@dimen/dp21"
                 android:layout_marginRight="@dimen/dp22"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp40"
+                android:text=""
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp45"
+                android:textSize="@dimen/ts16"
+                android:textColor="@color/c_686868"
+                android:background="@color/white"
+                android:id="@+id/tv_title"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f9f9f9">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_null_msg"
+                    android:visibility="@{vm.isAddFragment()?View.GONE:View.VISIBLE}"/>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/frame_layout"
+                    />
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 </layout>

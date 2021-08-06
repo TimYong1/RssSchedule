@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vm"
+            type="com.sx.trackdispatch.viewmodel.WorkOrderViewModel" />
+        <variable
+            name="adapter"
+            type="com.sx.trackdispatch.adapter.WorkOrderAdapter" />
+
+        <variable
+            name="imgAdapter"
+            type="com.sx.trackdispatch.adapter.ImageViewAdapter" />
+        <variable
+            name="workProgressAdapter"
+            type="com.sx.trackdispatch.adapter.WorkOrderProgressAdapter" />
+        <variable
+            name="imgLayoutManager"
+            type="androidx.recyclerview.widget.GridLayoutManager" />
+        <variable
+            name="progressLayoutManager"
+            type="androidx.recyclerview.widget.LinearLayoutManager" />
+        <variable
+            name="click"
+            type="com.sx.trackdispatch.view.WorkOrderFragment.ClickProxy" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="@dimen/dp160"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp20"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="@dimen/dp17"
+                    android:layout_height="@dimen/dp17"
+                    android:src="@drawable/ic_chat_order_type_select"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/ts16"
+                    android:textColor="@color/c_2495FF"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp7"
+                    android:text="@string/work_order"/>
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/dp30"
+                android:id="@+id/usersRecyclerView"
+                app:layoutManager="com.kunminx.binding_recyclerview.layout_manager.WrapContentLinearLayoutManager"
+                tools:listitem="@layout/item_work_order"
+                adapter="@{adapter}"
+                notifyCurrentListChanged="@{vm.notifyCurrentListChanged}"
+                submitList="@{vm.list}"
+                android:layout_marginTop="@dimen/dp18"/>
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp40">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f9f9f9"
+                android:paddingBottom="@dimen/dp20">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp13"
+                    android:text="工单编号:"
+                    android:textColor="@color/c_aaaaaa"
+                    android:textSize="@dimen/ts13"
+                    android:layout_marginStart="@dimen/dp17"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AQ20210506"
+                    android:textColor="@color/c_515151"
+                    android:textSize="@dimen/ts14"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                    app:layout_constraintStart_toEndOf="@+id/textView5"
+                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="1px"
+                    android:id="@+id/view_center"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="工单类型:"
+                    android:textColor="@color/c_aaaaaa"
+                    android:textSize="@dimen/ts13"
+                    app:layout_constraintTop_toTopOf="@+id/textView3"
+                    app:layout_constraintLeft_toRightOf="@+id/view_center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView7"
+                    android:text="普通工单"
+                    android:textColor="#FFB370"
+                    app:layout_constraintLeft_toRightOf="@+id/textView6"
+                    app:layout_constraintTop_toTopOf="@+id/textView6"
+                    android:textSize="@dimen/ts14"/>
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="创建人:"
+                    app:layout_constraintRight_toRightOf="@+id/textView5"
+                    android:textColor="@color/c_aaaaaa"
+                    android:textSize="@dimen/ts13"
+                    android:layout_marginTop="@dimen/dp16"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5"
+                    />
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="张三"
+                    android:textColor="@color/c_515151"
+                    android:textSize="@dimen/ts14"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                    app:layout_constraintStart_toEndOf="@+id/textView5"
+                    app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="区域负责人:"
+                    android:textColor="@color/c_aaaaaa"
+                    android:textSize="@dimen/ts13"
+                    app:layout_constraintTop_toTopOf="@+id/textView9"
+                    app:layout_constraintRight_toRightOf="@+id/textView6"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView11"
+                    android:text="张权"
+                    android:textColor="@color/c_515151"
+                    app:layout_constraintLeft_toRightOf="@+id/textView10"
+                    app:layout_constraintTop_toTopOf="@+id/textView10"
+                    android:textSize="@dimen/ts14"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/view_line1"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11"
+                    android:layout_marginTop="@dimen/dp23"
+                    android:background="@color/cefefef"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/view_line1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginStart="@dimen/dp17"
+                    android:layout_marginTop="22dp"
+                    android:textColor="@color/c_aaaaaa"
+                    android:textSize="@dimen/ts14"
+                    android:id="@+id/textView12"
+                    android:text="工单内容:"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="警报器出现问题，请求更换，位置上行线DK 500+50km"
+                    app:layout_constraintLeft_toLeftOf="@+id/textView12"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:id="@+id/textView13"
+                    android:layout_marginStart="@dimen/dp14"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:layout_marginEnd="@dimen/dp21"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="0dp"
+                    app:layout_constraintLeft_toLeftOf="@+id/textView13"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginEnd="@dimen/dp20"
+                    android:layout_height="wrap_content"
+                    tools:layout_height="@dimen/dp80"
+                    android:id="@+id/img_content_recyclerview"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13"
+                    tools:listitem="@layout/item_image"
+                    app:layoutManager="@{imgLayoutManager}"
+                    adapter="@{imgAdapter}"
+                    notifyCurrentListChanged="@{vm.notifyCurrentImgListChanged}"
+                    submitList="@{vm.imgList}"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/view_line2"
+                    app:layout_constraintTop_toBottomOf="@+id/img_content_recyclerview"
+                    android:layout_marginTop="@dimen/dp23"
+                    android:background="@color/cefefef"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/view_line2"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginStart="@dimen/dp17"
+                    android:layout_marginTop="22dp"
+                    android:textColor="@color/c_aaaaaa"
+                    android:textSize="@dimen/ts14"
+                    android:id="@+id/textView14"
+                    android:text="处理进度:"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="审批员审批通过，调度中心审批中"
+                    app:layout_constraintLeft_toLeftOf="@+id/textView14"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:id="@+id/textView15"
+                    android:layout_marginStart="@dimen/dp14"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:layout_marginEnd="@dimen/dp21"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/view_line3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15"
+                    android:layout_marginTop="@dimen/dp23"
+                    android:background="@color/cefefef"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/view_line3"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginStart="@dimen/dp17"
+                    android:layout_marginTop="22dp"
+                    android:textColor="@color/c_aaaaaa"
+                    android:textSize="@dimen/ts14"
+                    android:id="@+id/textView16"
+                    android:text="审核进度:"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    tools:layout_height="80dp"
+                    android:layout_marginEnd="@dimen/dp20"
+                    app:layout_constraintTop_toBottomOf="@+id/textView16"
+                    app:layout_constraintLeft_toLeftOf="@+id/textView15"
+                    app:layout_constraintRight_toRightOf="parent"
+                    tools:listitem="@layout/item_work_order_progress"
+                    android:id="@+id/recyclerview_progress"
+                    app:layoutManager="@{progressLayoutManager}"
+                    adapter="@{workProgressAdapter}"
+                    notifyCurrentListChanged="@{vm.workProgressListChanged}"
+                    submitList="@{vm.workProgressList}"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_progress"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginStart="@dimen/dp17"
+                    android:layout_marginTop="22dp"
+                    android:textColor="@color/c_aaaaaa"
+                    android:textSize="@dimen/ts14"
+                    android:id="@+id/textView21"
+                    android:text="审批意见:"/>
+
+                <TextView
+                    android:layout_width="@dimen/dp67"
+                    android:layout_height="@dimen/dp25"
+                    android:text="同  意"
+                    android:id="@+id/textView22"
+                    android:textSize="@dimen/ts11"
+                    android:textColor="@{vm.examineState==1?@color/white:@color/c_1ABC9C}"
+                    android:gravity="center"
+                    app:layout_constraintLeft_toLeftOf="@+id/textView21"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:onClick="@{()->click.examine(1)}"
+                    android:background="@{vm.examineState==1?@drawable/examine_agree_select:@drawable/examine_agree}"/>
+
+                <TextView
+                    android:layout_width="@dimen/dp67"
+                    android:layout_height="@dimen/dp25"
+                    android:text="不  同  意"
+                    android:id="@+id/textView23"
+                    android:textSize="@dimen/ts11"
+                    android:textColor="@{vm.examineState==0?@color/white:@color/c_ff7700}"
+                    android:gravity="center"
+                    app:layout_constraintLeft_toRightOf="@+id/textView22"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21"
+                    android:layout_marginStart="@dimen/dp14"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:onClick="@{()->click.examine(0)}"
+                    android:background="@{vm.examineState==0?@drawable/examine_disagree_select:@drawable/examine_disagree}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/textView22"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginStart="@dimen/dp17"
+                    android:layout_marginTop="22dp"
+                    android:textColor="@color/c_aaaaaa"
+                    android:textSize="@dimen/ts14"
+                    android:id="@+id/textView18"
+                    android:text="复批意见:"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:lines="5"
+                    android:id="@+id/ed_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginStart="@dimen/dp20"
+                    android:layout_marginEnd="@dimen/dp26"
+                    app:layout_constraintTop_toBottomOf="@+id/textView18"
+                    android:layout_marginTop="@dimen/dp12"
+                    android:background="@color/white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/ed_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginStart="@dimen/dp17"
+                    android:layout_marginTop="22dp"
+                    android:textColor="@color/c_aaaaaa"
+                    android:textSize="@dimen/ts14"
+                    android:id="@+id/textView19"
+                    android:text="附件:"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19"
+                    android:layout_marginTop="@dimen/dp37">
+                    <TextView
+                        android:layout_width="@dimen/dp126"
+                        android:layout_height="@dimen/dp36"
+                        android:textColor="@color/white"
+                        android:background="@drawable/transparent_msg_send_btn"
+                        android:text="取    消"
+                        android:gravity="center"
+                        android:textSize="@dimen/ts14"/>
+
+                    <TextView
+                        android:layout_width="@dimen/dp126"
+                        android:layout_height="@dimen/dp36"
+                        android:textColor="@color/white"
+                        android:background="@drawable/call_phone_btn"
+                        android:text="提    交"
+                        android:gravity="center"
+                        android:layout_marginLeft="@dimen/dp32"
+                        android:textSize="@dimen/ts14"/>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

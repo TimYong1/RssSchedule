@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kunminx.binding_recyclerview.adapter.SimpleDataBindingAdapter
 import com.sx.trackdispatch.R
 import com.sx.trackdispatch.databinding.ItemTransferOrderBinding
+import com.sx.trackdispatch.model.TransferOrderBean
 import com.sx.trackdispatch.view.TransferOrderDetailActivity
 
-class TransferOrderAdapter: SimpleDataBindingAdapter<String, ItemTransferOrderBinding> {
+class TransferOrderAdapter: SimpleDataBindingAdapter<TransferOrderBean, ItemTransferOrderBinding> {
     private var itemClick:ItemClickListener
 
     constructor(
@@ -21,21 +22,21 @@ class TransferOrderAdapter: SimpleDataBindingAdapter<String, ItemTransferOrderBi
     }
 
     override fun onBindItem(
-            binding: ItemTransferOrderBinding,
-            item: String,
-            holder: RecyclerView.ViewHolder
+        binding: ItemTransferOrderBinding,
+        item: TransferOrderBean,
+        holder: RecyclerView.ViewHolder
     ) {
         binding.click = View.OnClickListener {
-            mContext.startActivity(Intent(mContext,TransferOrderDetailActivity::class.java))
+            mContext.startActivity(Intent(mContext,TransferOrderDetailActivity::class.java).putExtra("data",item))
         }
         binding.itemClick = itemClick
         binding.bean = item
     }
 
     interface ItemClickListener{
-        fun confirm(bean:String)
-        fun reject()
+        fun confirm(bean:TransferOrderBean)
+        fun reject(bean: TransferOrderBean)
         fun execute()
-        fun speak(content:String)
+        fun speak(content:TransferOrderBean)
     }
 }

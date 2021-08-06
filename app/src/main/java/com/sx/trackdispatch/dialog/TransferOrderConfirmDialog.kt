@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.sx.trackdispatch.R
 import com.sx.trackdispatch.adapter.FileAdapter
 import com.sx.trackdispatch.databinding.DialogTransferOrderConfirmBinding
+import com.sx.trackdispatch.model.TransferOrderBean
 import com.sx.trackdispatch.viewmodel.DialogTransferOrderConfirmViewModel
 import com.util.toast.ToastUtils
 import droidninja.filepicker.FilePickerBuilder
@@ -22,6 +23,8 @@ import droidninja.filepicker.models.sort.SortingTypes
 class TransferOrderConfirmDialog(val activity: Activity, val lifecycle: LifecycleOwner, themeResId: Int) : Dialog(activity, themeResId) {
     private var binding: DialogTransferOrderConfirmBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_transfer_order_confirm,null,false)
     private lateinit var vm:DialogTransferOrderConfirmViewModel
+    private lateinit var bean:TransferOrderBean
+    private lateinit var dialogClick:DialogClick
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,28 @@ class TransferOrderConfirmDialog(val activity: Activity, val lifecycle: Lifecycl
         binding.adapter = FileAdapter(activity,itemClick)
         binding.layoutManage = GridLayoutManager(activity,2)
         binding.click = ClickProxy()
+        initListener()
+    }
+
+    private fun initListener() {
+        binding.tvCancel.setOnClickListener { dismiss() }
+        binding.tvConfirm.setOnClickListener {
+            if(binding.cbConfirm.isChecked){
+                bean.status  = "confirmed"
+            }else{
+                bean.status  = "abolished"
+            }
+            bean.remark = binding.edRemark.text.toString()
+            dismiss()
+            dialogClick.click(bean)
+        }
+    }
+
+    fun showDialog(bean:TransferOrderBean){
+        binding.tvSn.setText(bean.sn)
+        binding.edRemark.setText(bean.remark)
+        this.bean = bean
+        show()
     }
 
     private val itemClick = object:FileAdapter.ItemClickListener{
@@ -49,6 +74,10 @@ class TransferOrderConfirmDialog(val activity: Activity, val lifecycle: Lifecycl
 
     fun getViewModel():DialogTransferOrderConfirmViewModel{
         return vm
+    }
+
+    fun setDialogClick(click:DialogClick){
+        this.dialogClick = click
     }
 
     private fun pickerFile(){
@@ -76,6 +105,10 @@ class TransferOrderConfirmDialog(val activity: Activity, val lifecycle: Lifecycl
         fun checkBox(checked: Boolean){
             vm.confirmeState.value = checked
         }
+    }
+
+    interface DialogClick{
+        fun click(bean:TransferOrderBean)
     }
 
     class Builder private constructor(){

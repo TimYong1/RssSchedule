@@ -11,14 +11,11 @@ import com.amap.api.maps.CameraUpdateFactory
 import com.amap.api.maps.LocationSource.OnLocationChangedListener
 import com.amap.api.maps.UiSettings
 import com.amap.api.maps.model.*
-import com.example.common.utils.LogUtil
 import com.sx.base.BaseFragment
 import com.sx.trackdispatch.R
 import com.sx.trackdispatch.databinding.FragmentTrackMapBinding
 import com.sx.trackdispatch.dialog.ChatBoxDialog
 import com.sx.trackdispatch.viewmodel.TrackMapViewModel
-import com.xdf.map.BitMapUtils
-import com.xdf.tts.SpeechUtils
 import java.lang.Exception
 import java.util.*
 
@@ -46,6 +43,7 @@ class TrackMapFragment : BaseFragment<FragmentTrackMapBinding,TrackMapViewModel>
         uiSetting = aMap.uiSettings
         uiSetting.setMyLocationButtonEnabled(false) // 是否显示默认的定位按钮
         aMap.setMyLocationEnabled(true)
+//        aMap.
 //        mViewModel.lines.value.javaClass.
 //        var angle = 10F
 //        aMap.setOnMapClickListener {
@@ -53,7 +51,7 @@ class TrackMapFragment : BaseFragment<FragmentTrackMapBinding,TrackMapViewModel>
 //            aMap.setMyLocationRotateAngle(angle)
 //            aMap.moveCamera(CameraUpdateFactory.changeBearing(angle))
 //        }
-
+//
 //        aMap.setOnMapClickListener {
 //            aMap.setMyLocationRotateAngle(mineAngle.toFloat())
 //            aMap.moveCamera(CameraUpdateFactory.changeBearing(mineAngle.toFloat()))
@@ -85,7 +83,7 @@ class TrackMapFragment : BaseFragment<FragmentTrackMapBinding,TrackMapViewModel>
         val options = PolylineOptions()
         options.width(20f) //设置宽度
         //加入四个点
-        mViewModel.lines1.value?.forEach {
+        mViewModel.lines.value?.forEach {
             options.add(it)
         }
         //加入对应的颜色,使用setCustomTextureList 即表示使用多纹理；
@@ -134,13 +132,13 @@ class TrackMapFragment : BaseFragment<FragmentTrackMapBinding,TrackMapViewModel>
 
     override fun onLocationChanged(location: AMapLocation) {
         var latlng = LatLng(location.latitude,location.longitude)
-        aMap.moveCamera(CameraUpdateFactory.changeLatLng(latlng))
-        val latlnga = mViewModel.lines.value?.get(0)
-        val latlngb = mViewModel.lines.value?.get(1)
-        val mineAngle = BitMapUtils.TwoCoordinateAzimuth(latlnga?.latitude!!,latlnga.longitude,latlngb?.latitude!!,latlngb.longitude)
+//        aMap.moveCamera(CameraUpdateFactory.changeLatLng(latlng))
+//        val latlnga = mViewModel.lines.value?.get(0)
+//        val latlngb = mViewModel.lines.value?.get(1)
+//        val mineAngle = BitMapUtils.TwoCoordinateAzimuth(latlnga?.latitude!!,latlnga.longitude,latlngb?.latitude!!,latlngb.longitude)
 //        LogUtil.d(mineAngle.toString())
-        aMap.setMyLocationRotateAngle(mineAngle.toFloat())
-        aMap.moveCamera(CameraUpdateFactory.changeBearing(mineAngle.toFloat()+45))
+//        aMap.setMyLocationRotateAngle(mineAngle.toFloat())
+//        aMap.moveCamera(CameraUpdateFactory.changeBearing(mineAngle.toFloat()+45))
 //        aMap.moveCamera(CameraUpdateFactory.zoomTo(12));
 //        LogUtil.d("经纬度变化-->latitude:"+location?.latitude+"  longitude:"+location?.longitude)
 //        LogUtil.d("速度-->"+location.speed)

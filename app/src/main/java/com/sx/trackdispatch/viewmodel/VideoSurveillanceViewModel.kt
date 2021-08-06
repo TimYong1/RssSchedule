@@ -2,30 +2,38 @@ package com.sx.trackdispatch.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sx.hikvideo.Control.DevManageGuider
+import com.sx.trackdispatch.model.VideoDevice
 
 class VideoSurveillanceViewModel : ViewModel() {
     var notifyCurrentListChanged = MutableLiveData<Boolean>()
-    var list = MutableLiveData<MutableList<String>>()
-    var videoState = MutableLiveData<VideoState>()
-    var playUrl = MutableLiveData<String>()
+    var videoState = MutableLiveData<VideoState>().apply {
+        value = VideoState.STOP
+    }
+    var videoList = MutableLiveData<MutableList<DevManageGuider.DeviceItem>>().apply {
+        value = mutableListOf()
+    }
+    var currentPlayPosition = MutableLiveData<Int>().apply {
+        value = 0
+    }
+    var currentVideoItem = MutableLiveData<DevManageGuider.DeviceItem>()
+    var videos = MutableLiveData<MutableList<VideoDevice>>().apply {
+        value = mutableListOf()
+    }
+
+    var currentVolume = MutableLiveData<Int>().apply {
+        value = 0
+    }
+
+    var mMaxVolume = MutableLiveData<Int>().apply {
+        value = 10
+    }
 
     init {
         notifyCurrentListChanged.value = true
-        videoState.value = VideoState.UNPREPARED
-        list.value = mutableListOf(
-//            "ezopen://open.ys7.com/201392314/1.live",
-            "ezopen://open.ys7.com/239219669/1.hd.live",
-            "ezopen://open.ys7.com/239219670/1.hd.live",
-            "ezopen://open.ys7.com/239219671/1.hd.live",
-            "ezopen://open.ys7.com/239219672/1.hd.live",
-            "ezopen://open.ys7.com/239219673/1.hd.live",
-            "ezopen://open.ys7.com/239219676/1.hd.live",
-            "ezopen://open.ys7.com/239219677/1.hd.live"
-        )
-        playUrl.value =list.value?.get(0)
     }
 
-    enum class VideoState{
-        PLAYING,READY,FAIL,UNPREPARED,STOP
+    enum class VideoState(var code: Int) {
+        PLAYING(1),STOP(0),ERROR(-1);
     }
 }

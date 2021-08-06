@@ -7,7 +7,8 @@ import android.view.View
 import android.widget.Chronometer
 import android.widget.FrameLayout
 import androidx.lifecycle.Observer
-import com.example.common.utils.LogUtil
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.sx.trackdispatch.R
 import com.sx.trackdispatch.databinding.ActivityMainBinding
 
@@ -15,20 +16,20 @@ import com.sx.trackdispatch.viewmodel.MainViewModel
 import com.sx.base.BaseActivity
 import com.sx.trackdispatch.adapter.MainViewPagerAdapter
 import com.sx.trackdispatch.dialog.CallDialog
-import com.xdf.tts.SpeechUtils
 import com.zj.easyfloat.EasyFloat
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private lateinit var chronometer:Chronometer
     private var callDialog:CallDialog?=null
     private lateinit var pagerAdapter: MainViewPagerAdapter
+    private lateinit var navController: NavController
 
     override fun init() {
         binding.vm = mViewModel
         binding.click = ClickProxy()
         initListener()
+        navController = findNavController(R.id.nav_host_fragment)
 //        initFloatView()
-
     }
 
     private fun showCallDialog(){
@@ -44,9 +45,18 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     private fun initListener() {
         pagerAdapter = MainViewPagerAdapter(this.supportFragmentManager,0)
-        binding.pager.adapter = pagerAdapter
+//        binding.pager.adapter = pagerAdapter
+//        binding.pager.offscreenPageLimit = 0
         mViewModel.position.observe(this, Observer {
-            binding.pager.setCurrentItem(it)
+//            binding.pager.setCurrentItem(it)
+            when(it){
+                0->navController.navigate(R.id.navigation_home)
+                1->navController.navigate(R.id.navigation_blueprint)
+                2->navController.navigate(R.id.navigation_groups)
+                3->navController.navigate(R.id.navigation_hidden_danger)
+                4->navController.navigate(R.id.navigation_transfer_order)
+                5->navController.navigate(R.id.navigation_video_surveillance)
+            }
         })
     }
 
@@ -115,6 +125,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        pagerAdapter.fragments[binding.pager.currentItem].onActivityResult(requestCode, resultCode, data)
+//        pagerAdapter.fragments[binding.pager.currentItem].onActivityResult(requestCode, resultCode, data)
     }
 }

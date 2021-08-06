@@ -1,5 +1,6 @@
 package com.example.common.utils
 
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -15,10 +16,16 @@ class SimpleDateFormatUtils {
          * @return java.util.Date对象
          * @throws ParseException
          */
-        public fun getDataByFormatString(pattern:String ,dateFormatStr:String): Date{
-            val simpleDateFormat  = SimpleDateFormat(pattern);
-            val date  = simpleDateFormat.parse(dateFormatStr);
-            return date;
+        public fun getDataByFormatString(pattern:String ,dateFormatStr:String): Date?{
+            val date:Date
+            try {
+                val simpleDateFormat  = SimpleDateFormat(dateFormatStr);
+                date  = simpleDateFormat.parse(pattern);
+            }catch (e:Exception){
+                e.printStackTrace()
+                return null
+            }
+            return date
         }
 
         /**

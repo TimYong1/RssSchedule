@@ -28,7 +28,7 @@
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:padding="@dimen/dp5"
-                android:visibility="gone"
+                android:visibility="visible"
                 tools:visibility="visible"
                 android:onClick="@{()->click.messageClick()}">
                 <ImageView

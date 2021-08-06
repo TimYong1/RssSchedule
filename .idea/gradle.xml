@@ -12,10 +12,19 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/avenginekit" />
             <option value="$PROJECT_DIR$/base" />
+            <option value="$PROJECT_DIR$/client" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/easyfloat" />
+            <option value="$PROJECT_DIR$/emojilibrary" />
+            <option value="$PROJECT_DIR$/hikvideo" />
+            <option value="$PROJECT_DIR$/imagepicker" />
             <option value="$PROJECT_DIR$/map" />
+            <option value="$PROJECT_DIR$/mars-core-release" />
+            <option value="$PROJECT_DIR$/mina" />
+            <option value="$PROJECT_DIR$/tts" />
+            <option value="$PROJECT_DIR$/uikit" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">车载辅轨系统</string>
+    <string name="app_name">中国铁建铺轨调度系统</string>
     <string name="sure">确定</string>
     <string name="cancel">取消</string>
     <string name="required_permissions">缺少必须权限</string>
@@ -27,6 +27,7 @@
     <string name="hidden_danger_report">隐患上报</string>
     <string name="confirm">确 认</string>
     <string name="reject">驳 回</string>
+    <string name="cancel1">取 消</string>
     <string name="to_execute">去执行</string>
     <string name="conductor">车长：</string>
     <string name="dispatcher">调度员：</string>
@@ -37,6 +38,7 @@
     <string name="message">消息</string>
     <string name="message_center">消息中心</string>
     <string name="contacts">联系人</string>
+    <string name="work_order">工单</string>
     <string name="historical_call">历史通话</string>
     <string name="historical_msg">历史消息</string>
     <string name="transfer_order_confirm">调令确认</string>

@@ -1,1 +1,3 @@
-<resources></resources>
+<resources>
+    <string name="time_out_exception">网络异常，请稍后重试</string>
+</resources>

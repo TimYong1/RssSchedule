@@ -42,6 +42,7 @@ class ChatBoxDialog(val activity: Activity, themeResId: Int,val fragmentManager:
 
     private fun init() {
         binding.viewPager.adapter = ChatFragmentAdapter(fragmentManager,lifecycle.lifecycle)
+        binding.viewPager.offscreenPageLimit = 2
         binding.viewPager.setUserInputEnabled(false)
     }
 
@@ -56,7 +57,7 @@ class ChatBoxDialog(val activity: Activity, themeResId: Int,val fragmentManager:
     }
 
     enum class PageType constructor(val value:Int){
-        MESSAGE(0),USER(1)
+        MESSAGE(0),USER(1),ODER(2)
     }
 
     inner class ClickProxy{

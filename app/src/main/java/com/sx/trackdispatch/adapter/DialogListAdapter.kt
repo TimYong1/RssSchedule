@@ -8,9 +8,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sx.trackdispatch.R
 import com.sx.trackdispatch.databinding.ItemDialogBinding
+import com.sx.trackdispatch.model.ProjectBean
 
 
-class DialogListAdapter(private val mContext: Context, private val mList: MutableList<String>) :
+class DialogListAdapter(private val mContext: Context, private val mList: MutableList<ProjectBean>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var itemCLick: OnItemClickListener? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -32,7 +33,7 @@ class DialogListAdapter(private val mContext: Context, private val mList: Mutabl
         if (holder is ViewHolder) {
             val bean = mList[position]
             holder.itemBinding.imgRight.visibility = View.VISIBLE
-            holder.itemBinding.tvContent.text = bean
+            holder.itemBinding.tvContent.text = bean.name
             holder.itemBinding.root.setOnClickListener {
                 itemCLick?.itemClick(position,bean)
             }
@@ -48,7 +49,7 @@ class DialogListAdapter(private val mContext: Context, private val mList: Mutabl
     }
 
     interface OnItemClickListener {
-        fun itemClick(position: Int,bean:String)
+        fun itemClick(position: Int,bean:ProjectBean)
     }
 
     inner class ViewHolder(internal var itemBinding: ItemDialogBinding) :

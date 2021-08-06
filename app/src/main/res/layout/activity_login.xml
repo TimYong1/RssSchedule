@@ -43,37 +43,74 @@
             android:gravity="center_horizontal">
             <LinearLayout
                 android:layout_width="500dp"
-                android:layout_height="68dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:background="@drawable/shape_select_borde_login"
-                android:layout_marginBottom="@dimen/dp120"
-                android:gravity="center_vertical"
-                android:onClick="@{()->click.selectProject()}">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:text="@{vm.projectName}"
-                    android:textSize="@dimen/ts24"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/white"
-                    android:id="@+id/tv_select"
-                    android:layout_marginLeft="@dimen/dp24"/>
+                android:gravity="center_vertical">
                 <ImageView
                     android:layout_width="@dimen/dp44"
                     android:layout_height="@dimen/dp44"
-                    android:src="@mipmap/arrow_open"
-                    android:layout_marginRight="@dimen/dp12"/>
+                    android:src="@mipmap/ic_userid"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:textSize="@dimen/ts20"
+                    android:lines="1"
+                    android:textColor="@color/white"
+                    android:text="testadmin"
+                    android:hint="请输入司机账号"
+                    android:textColorHint="#6889fb"
+                    android:paddingLeft="@dimen/dp12"
+                    android:id="@+id/ed_user_id"/>
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp6"
+                android:background="#6DA0FF"/>
+
+            <LinearLayout
+                android:layout_width="500dp"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dp32">
+                <ImageView
+                    android:layout_width="@dimen/dp44"
+                    android:layout_height="@dimen/dp44"
+                    android:src="@mipmap/ic_password"
+                    />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:textSize="@dimen/ts20"
+                    android:hint="请输入密码"
+                    android:lines="1"
+                    android:textColor="@color/white"
+                    android:text="123456"
+                    android:inputType="textPassword"
+                    android:textColorHint="#6889fb"
+                    android:paddingLeft="@dimen/dp12"
+                    android:id="@+id/ed_password"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp6"
+                android:background="#6DA0FF"/>
             <TextView
                 android:layout_width="@dimen/dp324"
                 android:layout_height="@dimen/dp62"
-                android:text="进入项目"
+                android:text="登   录"
+                android:layout_marginTop="@dimen/dp80"
                 android:gravity="center"
                 android:background="@drawable/shaper_login_btn"
                 android:textColor="@color/white"
-                android:onClick="@{()->click.goMainActivity()}"
+                android:onClick="@{()->click.login()}"
                 android:textSize="@dimen/ts22"/>
+
         </LinearLayout>
     </RelativeLayout>
 </layout>

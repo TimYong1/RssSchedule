@@ -17,13 +17,12 @@
                 android:src="@mipmap/icon_back_black"
                 android:layout_marginTop="10dp"
                 android:id="@+id/img_back"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-                android:id="@+id/recyclerview"
-                android:layout_marginTop="15dp"/>
+                android:id="@+id/recyclerview" />
         </LinearLayout>
     </RelativeLayout>
 </layout>

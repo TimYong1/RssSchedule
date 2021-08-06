@@ -1,12 +1,12 @@
 package com.sx.base
 
-import android.app.Activity
-import android.app.Application
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -20,6 +20,7 @@ abstract class BaseActivity<B : ViewDataBinding, VM : ViewModel> : AppCompatActi
     protected lateinit var binding: B
     private var mApplicationProvider: ViewModelProvider? = null
     val backImgClick = BackImgClick()
+    private lateinit var toast: Toast
 
     protected val mViewModel: VM by lazy {
         ViewModelProvider.AndroidViewModelFactory.getInstance(this.application)
@@ -29,10 +30,18 @@ abstract class BaseActivity<B : ViewDataBinding, VM : ViewModel> : AppCompatActi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppManagerUtil.instance().addActivity(this)
+        toast = Toast.makeText(this, "", Toast.LENGTH_LONG)
         binding = DataBindingUtil.setContentView(this, getLayoutId())
         binding.lifecycleOwner = this
         setTransparentStatusBar()
         init()
+    }
+
+    fun showToast(text: String?){
+        if(!TextUtils.isEmpty(text)){
+            toast.setText(text)
+            toast.show()
+        }
     }
 
     abstract fun init()

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item"
+            type="com.sx.trackdispatch.model.VideoDevice" />
+    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -8,12 +14,13 @@
         <ImageView
             android:layout_width="@dimen/dp232"
             android:layout_height="@dimen/dp130"
-            android:background="@color/c_2D76FF"
+            android:background="@drawable/video_item_bg"
+            app:imageUrl="@{item.url}"
             android:layout_marginTop="@dimen/dp10"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="视频2"
+            android:text="@{item.name}"
             android:textSize="@dimen/ts16"
             android:textColor="@color/c_979797"
             android:layout_marginTop="@dimen/dp10"/>

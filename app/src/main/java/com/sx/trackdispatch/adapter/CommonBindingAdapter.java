@@ -17,6 +17,7 @@
 package com.sx.trackdispatch.adapter;
 
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,7 +33,18 @@ public class CommonBindingAdapter {
 
     @BindingAdapter(value = {"imageUrl", "placeHolder"}, requireAll = false)
     public static void imageUrl(ImageView view, String url, Drawable placeHolder) {
-        Glide.with(view.getContext()).load(url).placeholder(placeHolder).into(view);
+        try {
+            if(!TextUtils.isEmpty(url)){
+                Glide.with(view.getContext()).load(url).placeholder(placeHolder).into(view);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @BindingAdapter(value = {"touchListener"}, requireAll = false)
+    public static void touchListener(View view,View.OnTouchListener listener) {
+        view.setOnTouchListener(listener);
     }
 
     @BindingAdapter(value = {"imageUrlLocal"}, requireAll = false)
@@ -40,8 +52,8 @@ public class CommonBindingAdapter {
         view.setImageResource(res);
     }
 
-    @BindingAdapter(value = {"visible"}, requireAll = false)
-    public static void visible(View view, boolean visible) {
+    @BindingAdapter(value = {"viewVisible"}, requireAll = false)
+    public static void viewVisible(View view, boolean visible) {
         view.setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 

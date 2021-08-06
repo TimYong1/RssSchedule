@@ -3,13 +3,14 @@
     <data>
         <variable
             name="bean"
-            type="java.lang.String" />
+            type="com.sx.trackdispatch.model.TransferOrderBean" />
         <variable
             name="click"
             type="android.view.View.OnClickListener" />
         <variable
             name="itemClick"
             type="com.sx.trackdispatch.adapter.TransferOrderAdapter.ItemClickListener" />
+        <import type="android.view.View"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,14 +36,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="调令编号：202105060002号"
+                    android:text='@{"调令编号："+bean.sn+"号"}'
                     android:textColor="@color/c_6DA0FF"
                     android:textSize="@dimen/ts15"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="待确认"
+                    android:text='@{bean.status}'
                     android:textSize="@dimen/ts14"
                     android:textColor="@color/white"
                     android:layout_marginLeft="@dimen/dp20"
@@ -50,7 +51,8 @@
                     android:paddingRight="@dimen/dp7"
                     android:paddingTop="@dimen/dp3"
                     android:paddingBottom="@dimen/dp3"
-                    android:background="@drawable/transfer_order_status_1ed5e3"/>
+                    android:background='@{bean.status.equals("待确认")?@drawable/transfer_order_status_1ed5e3:bean.status.equals("已确认")?@drawable/transfer_order_status_1ee31e:bean.status.equals("已作废")?@drawable/transfer_order_status_ff2543:@drawable/transfer_order_status_2d76ff}'/>
+<!--                    android:background="@drawable/transfer_order_status_1ed5e3"/>-->
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -59,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/ts17"
                     android:textColor="@color/c_979797"
-                    android:text="2021-01-01"
+                    android:text="@{bean.createTime}"
                     />
             </LinearLayout>
             <View
@@ -69,7 +71,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="列车001007于7:15从基地站DK200.000经西环左线运行至南岗站DK206.000进行卸枕木作业，返回经西环左线运行至基地站DK206.00 1.DK200.000至DK206.000间限速25km/h；岔区限速5km/h 2.列车运行中加强瞭望，保持联系，控制速度，保证安全 3、列车必须在岔道线一度停车去人是否有钩锁器，近路是否正确后方可通过。"
+                android:text="@{bean.workContent}"
                 android:textColor="@color/c_979797"
                 android:textSize="@dimen/ts17"
                 android:paddingLeft="@dimen/dp24"
@@ -97,7 +99,8 @@
                     android:layout_height="wrap_content"
                     android:text="1:58"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/ts10"/>
+                    android:textSize="@dimen/ts10"
+                    android:visibility="gone"/>
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -109,7 +112,8 @@
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/dp62"
                 android:paddingTop="@dimen/dp5"
-                android:paddingBottom="@dimen/dp5">
+                android:paddingBottom="@dimen/dp5"
+                android:visibility='@{bean.status.equals("待确认")?View.VISIBLE:View.GONE}'>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,7 +133,7 @@
                     android:text="@string/reject"
                     android:textColor="@color/c_2D76FF"
                     android:background="@drawable/transfer_order_reject_btn"
-                    android:onClick="@{()->itemClick.reject()}"
+                    android:onClick="@{()->itemClick.reject(bean)}"
                     android:textSize="@dimen/ts17"
                     android:paddingLeft="@dimen/dp18"
                     android:paddingRight="@dimen/dp18"
@@ -148,6 +152,7 @@
                     android:paddingLeft="@dimen/dp18"
                     android:paddingRight="@dimen/dp18"
                     android:paddingTop="@dimen/dp5"
+                    android:visibility="gone"
                     android:paddingBottom="@dimen/dp5"/>
             </LinearLayout>
         </LinearLayout>

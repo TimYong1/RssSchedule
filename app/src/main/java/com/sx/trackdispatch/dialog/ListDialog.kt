@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sx.trackdispatch.R
 import com.sx.trackdispatch.adapter.DialogListAdapter
 import com.sx.trackdispatch.databinding.DialogListBinding
+import com.sx.trackdispatch.model.ProjectBean
 import java.util.*
 
 class ListDialog {
@@ -18,7 +19,7 @@ class ListDialog {
     private var dialog: Dialog? = null
     private var context: Context? = null
     private var adapter: DialogListAdapter? = null
-    private var list: MutableList<String> = mutableListOf()
+    private var list: MutableList<ProjectBean> = mutableListOf()
 
     constructor(context: Context?){
         this.context = context
@@ -60,7 +61,7 @@ class ListDialog {
         return dialog!!.isShowing
     }
 
-    fun showDialog(list: MutableList<String>) {
+    fun showDialog(list: MutableList<ProjectBean>) {
         if (dialog!!.isShowing) {
             return
         }
@@ -72,11 +73,11 @@ class ListDialog {
         dialog?.show()
     }
 
-    fun setList(list: MutableList<String>){
+    fun setList(list: MutableList<ProjectBean>){
         this.list = list
     }
 
-    private fun refreshData(list: MutableList<String>) {
+    private fun refreshData(list: MutableList<ProjectBean>) {
         this.list.clear()
         this.list.addAll(list)
         adapter!!.notifyDataSetChanged()

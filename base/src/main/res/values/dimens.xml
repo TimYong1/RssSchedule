@@ -106,6 +106,7 @@
     <dimen name="dp620">620dp</dimen>
     <dimen name="dp61">61dp</dimen>
     <dimen name="dp180">180dp</dimen>
+    <dimen name="dp140">140dp</dimen>
     <dimen name="dp132">132dp</dimen>
     <dimen name="dp17">17dp</dimen>
     <dimen name="dp46">46dp</dimen>

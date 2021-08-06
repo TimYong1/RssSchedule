@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="dp450">450dp</dimen>
+    <dimen name="video_control_img_width">32dp</dimen>
+    <dimen name="video_control_img_height">32dp</dimen>
+    <dimen name="ts11">11sp</dimen>
 </resources>

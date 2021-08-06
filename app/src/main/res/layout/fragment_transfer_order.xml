@@ -14,27 +14,38 @@
             name="settingClick"
             type="android.view.View.OnClickListener" />
     </data>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/dp30">
-        <include
-            layout="@layout/include_setting"
-            android:layout_gravity="end"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginRight="@dimen/dp30"
-            android:layout_marginTop="@dimen/dp54"
-            app:click="@{settingClick}"
-            />
-        <androidx.recyclerview.widget.RecyclerView
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="com.kunminx.binding_recyclerview.layout_manager.WrapContentLinearLayoutManager"
-            tools:listitem="@layout/item_transfer_order"
-            adapter="@{adapter}"
-            notifyCurrentListChanged="@{vm.notifyCurrentListChanged}"
-            submitList="@{vm.list}"/>
-    </LinearLayout>
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp30">
+            <include
+                layout="@layout/include_setting"
+                android:layout_gravity="end"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="@dimen/dp30"
+                android:layout_marginTop="@dimen/dp54"
+                app:click="@{settingClick}"
+                />
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/refresh_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="com.kunminx.binding_recyclerview.layout_manager.WrapContentLinearLayoutManager"
+                tools:listitem="@layout/item_transfer_order"
+                adapter="@{adapter}"
+                notifyCurrentListChanged="@{vm.notifyCurrentListChanged}"
+                submitList="@{vm.list}"/>
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </LinearLayout>
+
 </layout>

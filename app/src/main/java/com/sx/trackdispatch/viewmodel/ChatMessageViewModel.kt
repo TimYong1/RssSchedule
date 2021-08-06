@@ -8,6 +8,7 @@ class ChatMessageViewModel: ViewModel() {
     var notifyContentCurrentListChanged = MutableLiveData<Boolean>()
     var list = MutableLiveData<MutableList<String>>()
     var listContent = MutableLiveData<MutableList<String>>()
+    var isAddFragment = MutableLiveData<Boolean>().apply { value = false }
 
     init {
         notifyCurrentListChanged.value = true

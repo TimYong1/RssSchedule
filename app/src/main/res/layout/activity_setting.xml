@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="backClick"
             type="android.view.View.OnClickListener" />
+        <variable
+            name="click"
+            type="com.sx.trackdispatch.view.SettingActivity.ClickProcy" />
+        <variable
+            name="vm"
+            type="com.sx.trackdispatch.viewmodel.SettingViewModel" />
     </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -43,8 +54,17 @@
                 android:layout_marginLeft="@dimen/dp10"/>
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="@dimen/dp11"
+            android:layout_marginStart="@dimen/dp40"
+            android:layout_marginEnd="@dimen/dp40"
+            android:background="#3c2d76ff"/>
+
         <LinearLayout
-            android:layout_width="400dp"
+            android:layout_width="wrap_content"
+            android:minWidth="@dimen/dp400"
             android:layout_height="42dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
@@ -53,7 +73,7 @@
             android:layout_marginTop="50dp"
             android:background="@drawable/shape_setting_select_borde">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp80"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/ts18"
                 android:text="@string/device_id"
@@ -71,38 +91,62 @@
                 android:text="HK562666"
                 android:layout_marginLeft="@dimen/dp30"/>
         </LinearLayout>
-
         <LinearLayout
-            android:layout_width="400dp"
-            android:layout_height="42dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_marginLeft="@dimen/dp100"
-            android:paddingLeft="14dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/shape_setting_select_borde">
+            android:layout_marginTop="10dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:minWidth="@dimen/dp400"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingLeft="14dp"
+                android:paddingRight="@dimen/dp10"
+                android:onClick="@{()->click.changeProject()}"
+                android:background="@drawable/shape_setting_select_borde">
+                <TextView
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/ts18"
+                    android:text="当前项目"
+                    android:textColor="@color/c_5e5e5e"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="@dimen/dp30"
+                    android:background="@color/c_707070"
+                    android:layout_marginLeft="9dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/ts18"
+                    android:textColor="@color/c_5e5e5e"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:text="@{vm.currentProject.name}"
+                    android:layout_marginLeft="@dimen/dp30"/>
+                <ImageView
+                    android:layout_width="@dimen/dp36"
+                    android:layout_height="@dimen/dp36"
+                    android:src="@mipmap/arror_down"
+                    viewVisible="@{vm.state}"/>
+            </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/ts18"
-                android:text="@string/device_id"
-                android:textColor="@color/c_5e5e5e"/>
-            <View
-                android:layout_width="1dp"
-                android:layout_height="@dimen/dp30"
-                android:background="@color/c_707070"
-                android:layout_marginLeft="9dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/ts18"
-                android:textColor="@color/c_5e5e5e"
-                android:gravity="center_vertical"
-                android:text="HK562666"
-                android:drawableRight="@mipmap/down"
-                android:layout_marginRight="@dimen/dp10"
-                android:layout_marginLeft="@dimen/dp30"/>
+                android:text='@{!vm.state?"切换":"保存"}'
+                tools:text="切换"
+                android:onClick="@{()->click.changeState()}"
+                android:padding="@dimen/dp8"
+                android:textColor="@{!vm.state?@color/c_ff7700:@color/c_19DC93}"
+                android:textSize="@dimen/ts18"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="@dimen/dp150"
             android:layout_height="@dimen/dp42"
@@ -110,6 +154,7 @@
             android:layout_marginLeft="@dimen/dp100"
             android:layout_marginTop="@dimen/dp54"
             android:gravity="center"
+            android:onClick="@{()->click.synInfo()}"
             android:background="@drawable/update_btn_bg">
             <ImageView
                 android:layout_width="@dimen/dp22"
@@ -123,5 +168,28 @@
                 android:layout_marginLeft="@dimen/dp11"
                 android:text="更新信息"/>
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="@dimen/dp60"
+            android:layout_marginStart="@dimen/dp40"
+            android:layout_marginEnd="@dimen/dp40"
+            android:background="#3c2d76ff"/>
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="@dimen/dp52"
+            android:gravity="center"
+            android:text="退出登录"
+            android:onClick="@{()->click.loginOut()}"
+            android:textSize="@dimen/ts20"
+            android:textColor="@color/white"
+            android:background="@color/c_FFB370"
+            android:layout_marginTop="@dimen/dp30"
+            android:layout_gravity="center_horizontal"/>
+
     </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </layout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.sx.trackdispatch.view.TrackMapFragment"
+        android:label="地图"
+        tools:layout="@layout/fragment_track_map" />
+
+    <fragment
+        android:id="@+id/navigation_blueprint"
+        android:name="com.sx.trackdispatch.view.BlueprintFragment"
+        android:label="计划图"
+        tools:layout="@layout/fragment_blueprint" />
+
+    <fragment
+        android:id="@+id/navigation_groups"
+        android:name="com.sx.trackdispatch.view.GroupsFragment"
+        android:label="车皮编组"
+        tools:layout="@layout/fragment_groups" />
+
+    <fragment
+        android:id="@+id/navigation_hidden_danger"
+        android:name="com.sx.trackdispatch.view.HiddenDangerFragment"
+        android:label="隐患上报"
+        tools:layout="@layout/fragment_hidden_danger" />
+
+    <fragment
+        android:id="@+id/navigation_transfer_order"
+        android:name="com.sx.trackdispatch.view.TransferOrderFragment"
+        android:label="调令"
+        tools:layout="@layout/fragment_transfer_order" />
+
+    <fragment
+        android:id="@+id/navigation_video_surveillance"
+        android:name="com.sx.trackdispatch.view.VideoSurveillanceFragment"
+        android:label="视频监控"
+        tools:layout="@layout/fragment_video_surveillance" />
+</navigation>

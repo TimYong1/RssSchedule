@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="com.sx.trackdispatch.viewmodel.VideoFullViewModel" />
+        <variable
+            name="click"
+            type="com.sx.trackdispatch.view.VideoFullActivity.ClickProxy" />
+        <import type="android.view.View"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <SurfaceView
+            android:id="@+id/surface_preview_play"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:background="#676767"
+            android:onClick="@{()->click.playVideo()}"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/c_d9d9d9">
+            <ImageView
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:src="@mipmap/ic_video_pause"
+                android:visibility="gone"
+                android:layout_marginStart="@dimen/dp23"/>
+
+            <ImageView
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:src="@mipmap/ic_video_snap"
+                android:onClick="@{()->click.snapVideo()}"
+                android:layout_marginStart="@dimen/dp18"/>
+
+
+            <LinearLayout
+                android:layout_width="@dimen/dp180"
+                android:layout_height="@dimen/dp30"
+                android:background="@drawable/voice_control"
+                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/dp18">
+                <ImageView
+                    android:layout_width="@dimen/dp22"
+                    android:layout_height="@dimen/dp22"
+                    android:src="@mipmap/ic_voice"
+                    android:layout_marginStart="@dimen/dp5"/>
+                <androidx.appcompat.widget.AppCompatSeekBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="@{vm.mMaxVolume}"
+                    android:progress="@{vm.currentVolume}"
+                    android:id="@+id/seek_bar"
+                    android:focusableInTouchMode="true"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:src="@mipmap/ic_video_full"
+                android:onClick="@{()->click.fullClick()}"
+                android:layout_marginRight="@dimen/dp18"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

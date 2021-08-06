@@ -5,6 +5,10 @@
         <variable
             name="backClick"
             type="android.view.View.OnClickListener" />
+        <variable
+            name="vm"
+            type="com.sx.trackdispatch.viewmodel.TransferOrderDetailViewModel" />
+        <import type="android.view.View"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp24"
             android:layout_marginTop="38dp"
-            android:text="调令编号：202105060002号"
+            android:text='@{"调令编号："+vm.bean.sn+"号"}'
             android:textColor="@color/c_2D76FF"
             android:textSize="@dimen/ts22" />
 
@@ -40,7 +44,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text='@{@string/conductor+"张三"}'
+                android:text='@{@string/conductor+vm.bean.captain}'
                 android:textColor="@color/c_979797"
                 android:textSize="@dimen/ts17" />
 
@@ -64,6 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1:58"
+                    android:visibility="gone"
                     android:textColor="@color/white"
                     android:textSize="@dimen/ts10" />
             </LinearLayout>
@@ -86,8 +91,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="待确认"
-                android:textColor="@color/c_1ED5E3"
+                android:text="@{vm.bean.status}"
+                android:textColor='@{vm.bean.status.equals("待确认")?@color/c_1ED5E3:vm.bean.status.equals("已确认")?@color/c_1EE31E:vm.bean.status.equals("已作废")?@color/c_ff2543:@color/c_2D76FF}'
                 android:textSize="@dimen/ts17" />
         </LinearLayout>
 
@@ -96,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp24"
             android:layout_marginTop="@dimen/dp16"
-            android:text='@{@string/dispatcher+"张三"}'
+            android:text='@{@string/dispatcher+vm.bean.dispatcher}'
             android:textColor="@color/c_979797"
             android:textSize="@dimen/ts17" />
 
@@ -105,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp24"
             android:layout_marginTop="@dimen/dp16"
-            android:text='@{@string/receiving_driver+"张三"}'
+            android:text='@{@string/receiving_driver+vm.bean.driver}'
             android:textColor="@color/c_979797"
             android:textSize="@dimen/ts17" />
 
@@ -114,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp24"
             android:layout_marginTop="@dimen/dp16"
-            android:text='@{@string/locomotive_number+"张三"}'
+            android:text='@{@string/locomotive_number+vm.bean.train}'
             android:textColor="@color/c_979797"
             android:textSize="@dimen/ts17" />
 
@@ -126,7 +131,7 @@
             android:layout_marginRight="@dimen/dp24"
             android:paddingBottom="@dimen/dp10"
             android:layout_weight="1"
-            android:text='列车001007于7:15从基地站DK200.000经西环左线运行至南岗站DK206.000进行卸枕木作业，返回经西环左线运行至基地站DK206.00 1.DK200.000至DK206.000间限速25km/h；岔区限速5km/h 2.列车运行中加强瞭望，保持联系，控制速度，保证安全 3、列车必须在岔道线一度停车去人是否有钩锁器，近路是否正确后方可通过。'
+            android:text='@{vm.bean.workContent}'
             android:textColor="@color/c_979797"
             android:textSize="@dimen/ts17"
             />
@@ -137,7 +142,8 @@
             android:layout_gravity="end"
             android:orientation="horizontal"
             android:layout_marginBottom="@dimen/dp40"
-            android:layout_marginRight="@dimen/dp30">
+            android:layout_marginRight="@dimen/dp30"
+            android:visibility='@{vm.bean.status.equals("待确认")?View.VISIBLE:View.GONE}'>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -149,7 +155,8 @@
                 android:paddingBottom="@dimen/dp5"
                 android:text="@string/confirm"
                 android:textColor="@color/white"
-                android:textSize="@dimen/ts20" />
+                android:textSize="@dimen/ts20"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -173,6 +180,7 @@
                 android:paddingRight="@dimen/dp18"
                 android:paddingBottom="@dimen/dp5"
                 android:text="@string/to_execute"
+                android:visibility="gone"
                 android:textColor="@color/white"
                 android:textSize="@dimen/ts20" />
         </LinearLayout>
